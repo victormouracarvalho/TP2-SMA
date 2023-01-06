@@ -17,10 +17,39 @@ class Agent:
         self.deplacementAleatoire()
 
 
+    def filtre_click(self, pos):
+        # Declara os outros objetos
+        agents = []
+
+        # Verifica a lista dos objetos que ele percebeu.
+        for i in self.listPerceptron:
+            i.dist = self.body.position.distance_to(i.position) # usa o método distance_to para calcular a distância
+            #com base na posição
+
+            #verifica tipo do objeto lido na percepção do agente
+            if isinstance(i, Agent):
+                agents.append(i)
+
+
+        #sorting by the lowest value
+        agents.sort(key=lambda x: x.dist, reverse=False)
+        return agents
 
     def deplacementAleatoire(self):
         self.body.vitesse = Vector2(random.randint(0, core.WINDOW_SIZE[0]), random.randint(0, core.WINDOW_SIZE[1]))
         self.body.position += self.body.vitesse
+
+
+    def infection(self, pos):
+        agents = self.filtre(pos)
+
+        if len(agents)>0:
+            target = agents[0].position
+
+
+
+
+
 
     def show(self, statut):
         # print("chegou aqui no show")
