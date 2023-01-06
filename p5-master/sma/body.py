@@ -4,6 +4,7 @@ from pygame.math import Vector2
 
 import core
 from sma.fustrum import Fustrum
+from sma.epidemie import Epidemie
 
 
 class Body:
@@ -17,6 +18,7 @@ class Body:
         self.accMax = 5
         self.mass = 10
         self.color = (0,0,0)
+        self.donnes = {}
         #randomizando a cor no espectro RGB
 
     def applyDecision(self):
@@ -36,7 +38,11 @@ class Body:
         self.edge()
 
     def show(self):
-        # core.Draw.circle(self.color, self.position, self.mass)
+        core.Draw.circle(self.color, self.position, self.mass)
+
+
+    def update(self):
+        self.dic = Epidemie.data(self)
 
     def edge(self): # quando chega num limite, inverte uma direção/eixo.
         if self.position.x <= 0:
