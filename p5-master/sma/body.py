@@ -42,7 +42,7 @@ class Body:
 
 
     def update(self):
-        self.dic = Epidemie.data(self)
+        self.donnes = Epidemie.data(self)
 
     def edge(self): # quando chega num limite, inverte uma direção/eixo.
         if self.position.x <= 0:

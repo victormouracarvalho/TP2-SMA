@@ -36,7 +36,7 @@ class Agent:
         return agents
 
     def deplacementAleatoire(self):
-        self.body.vitesse = Vector2(random.randint(0, core.WINDOW_SIZE[0]), random.randint(0, core.WINDOW_SIZE[1]))
+        self.body.vitesse = Vector2(random.randint(0, core.WINDOW_SIZE[0]), random.randint(0, core.WINDOW_SIZE[1])))
         self.body.position += self.body.vitesse
 
 
@@ -48,7 +48,13 @@ class Agent:
 
 
 
-
+    def maladeRationnal(self):
+        if self.statut == "I":
+            self.body.position = Vector2(core.WINDOW_SIZE[0]) ,core.WINDOW_SIZE[1])
+            self.body.vitesse = Vector2()
+            self.body.acc = Vector2()
+            self.body.accMax=0
+            self.body.vMax = 0
 
 
     def show(self, statut):
